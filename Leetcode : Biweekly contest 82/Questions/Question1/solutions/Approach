@@ -1,1 +1,37 @@
-concepts used : Tree
+concepts used : 
+   1. Tree
+   2. recursion
+
+code :
+
+class Solution {
+    public boolean solve (TreeNode root){
+        if(root.left == null && root.right == null ){  
+            if(root.val == 1){
+                return true;
+            }
+            return false;
+        }
+
+        boolean left = solve(root.left);
+        boolean right = solve(root.right);
+        if(root.val == 2){
+            return left || right;
+        }
+        return left && right;
+    }
+    public boolean evaluateTree(TreeNode root) {
+        if(root.left == null && root.right == null ){  
+            if(root.val == 1){
+                return true;
+            }
+            return false;
+        }
+        return solve(root);
+        
+        
+    }
+}
+
+Time complexity = O(n)
+space complexity = O(1)
